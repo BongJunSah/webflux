@@ -67,6 +67,7 @@ public class BackPressureTest {
                 consumed++;
                 if(limit == consumed){
                     consumed = 0;
+
                     System.out.println("hookOnNext called");
                     request(limit);
                 }
