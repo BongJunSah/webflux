@@ -7,8 +7,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
 public class CustomerRouterFunction {
@@ -18,7 +17,8 @@ public class CustomerRouterFunction {
         return RouterFunctions
                 .route(GET("/router/r2customers"), customerHandler::getCustomers)
                 .andRoute(GET("/router/r2customers/{id}"), customerHandler::getCustomer)
-                .andRoute(POST("/router/r2customers"), customerHandler::saveCustomer);
+                .andRoute(POST("/router/r2customers"), customerHandler::saveCustomer)
+                .andRoute(PUT("/router/r2customers/{id}"), customerHandler::updateCustomer);
     }
 
 }
